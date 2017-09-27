@@ -15,20 +15,22 @@ public class ComparatorDemo {
         addresses.add(new Address("678 Leon Rd.", "Tallahassee", "FL", "32307"));
         addresses.add(new Address("8 Deep Sea Way", "Boca Raton", "FL", "33433"));
 
-        //Feel free to add in more addresses if you would like
-
         System.out.println("Before sorting");
         print(addresses);
 
-        // !! - Write an anonymous class to sort by state (alphabetically)
-        Collections.sort(addresses, /* anonymous class here */
+        Collections.sort(addresses, new Comparator<Address>() {
+                    @Override
+                    public int compare(Address o1, Address o2) {
+                        return o1.getState().compareTo(o2.getState());
+                    }
+                }
         );
 
         System.out.println("\nAfter sorting by state");
         print(addresses);
 
-        // !! - Write a lambda to sort by city alphabetically
-        Collections.sort(addresses, /* lambda here */);
+        Collections.sort(addresses, Comparator.comparing(Address::getCity));
+
 
         System.out.println("\nAfter sorting by city");
         print(addresses);
