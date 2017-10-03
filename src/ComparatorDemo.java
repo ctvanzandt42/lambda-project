@@ -29,7 +29,7 @@ public class ComparatorDemo {
         System.out.println("\nAfter sorting by state");
         print(addresses);
 
-        Collections.sort(addresses, Comparator.comparing(Address::getCity));
+        Collections.sort(addresses, (a1, a2) -> a1.getCity().compareTo(a2.getCity()));
 
 
         System.out.println("\nAfter sorting by city");
